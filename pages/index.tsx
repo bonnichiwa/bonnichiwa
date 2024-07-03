@@ -64,7 +64,7 @@ export default function Home() {
       gsap.to(monthRef.current, { x: 0, delay: 0.1 })
       gsap.to(gridRef.current, { opacity: 1, delay: 0.3 })
       gsap.to(topRowRef.current, { x: 0 })
-      gsap.to(modalRef.current, { top: '-100vh', opacity: 0, onComplete: () => gsap.to(modalRef.current, { visibility: 'hidden'}) })
+      gsap.to(modalRef.current, { top: '-100vh', opacity: 0, onComplete: () => gsap.to(modalRef.current, { visibility: 'hidden'}) as any})
 
     }
   }, [isModalOpen]);
@@ -88,7 +88,7 @@ export default function Home() {
       gsap.to(monthRef.current, { x: 0, delay: 0.1 })
       gsap.to(gridRef.current, { opacity: 1, delay: 0.3 })
       gsap.to(topRowRef.current, { x: 0 })
-      gsap.to(aboutModalRef.current, { top: '-100vh', opacity: 0, onComplete: () => gsap.to(aboutModalRef.current, { visibility: 'hidden'}) })
+      gsap.to(aboutModalRef.current, { top: '-100vh', opacity: 0, onComplete: () => gsap.to(aboutModalRef.current, { visibility: 'hidden'}) as any })
     }
   }, [isAboutModalOpen]);
 
@@ -111,7 +111,7 @@ export default function Home() {
       gsap.to(monthRef.current, { x: 0, delay: 0.1 })
       gsap.to(gridRef.current, { opacity: 1, delay: 0.3 })
       gsap.to(topRowRef.current, { x: 0 })
-      gsap.to(projectsModalRef.current, { top: '-100vh', opacity: 0, onComplete: () => gsap.to(projectsModalRef.current, { visibility: 'hidden'}) })
+      gsap.to(projectsModalRef.current, { top: '-100vh', opacity: 0, onComplete: () => gsap.to(projectsModalRef.current, { visibility: 'hidden'}) as any })
     }
   }, [isProjectsModalOpen]);
 

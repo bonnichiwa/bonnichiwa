@@ -18,7 +18,7 @@ interface SquareProps {
 export default function Square({ space, date, position }: SquareProps) {
   const { year, month, setDate } = useDateStore(state => state) as DateStore;
   const { openModal } = useModalStore(state => state) as ModalStore;
-  const map = date ? useLoader(TextureLoader, `../../thumbnails/${year}/${month}/${date}.jpg`) : useLoader(TextureLoader, '../../thumbnails/loading.png');
+  const map = useLoader(TextureLoader, date ? `../../thumbnails/${year}/${month}/${date}.jpg` : '../../thumbnails/loading.png')
   const meshRef = useRef<any>();
   const infoRef = useRef<any>();
   const [hovered, setHovered] = useState(0)

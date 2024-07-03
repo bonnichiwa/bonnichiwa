@@ -38,7 +38,7 @@ export default function Cursor() {
     document.removeEventListener("mouseup", onMouseUp);
   };
 
-  const onMouseMove = (e) => {
+  const onMouseMove = (e: any) => {
     setPosition({x: e.clientX, y: e.clientY});
   };  
     

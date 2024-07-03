@@ -17,7 +17,6 @@ export default function NavYear() {
   const yearRef = useRef<any>([]);
 
   useEffect(() => {
-    console.log(yearRef.current)
     gsap.fromTo(yearRef.current,
       { opacity: 0, y: -50 },
       { opacity: 1, y: 0, stagger: 0.05, delay: 2.2 }
@@ -39,12 +38,14 @@ export default function NavYear() {
       <YearsWrapper>
         {
           years.map((year, i) => (
-            <div ref={el => yearRef.current[i+2] = el}>
+            <div
+              ref={el => yearRef.current[i+2] = el}
+              key={i}
+            >
               <NavLabel
                 label={year}
                 selected={year === currentYear}
-                onClick={() => setDate(year, month, day)}
-                key={i}
+                onClick={() => setDate(year, month, day as number)}
               />
             </div>
           ))

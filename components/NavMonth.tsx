@@ -43,7 +43,7 @@ export default function NavMonth() {
             <NavLabel
               label={month}
               selected={month === mappedMonthsReverse[currentMonth]}
-              onClick={() => setDate(year, mappedMonths[month], day)}
+              onClick={() => setDate(year, mappedMonths[month], day as number)}
             />
           </Box>
         ))

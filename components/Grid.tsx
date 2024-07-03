@@ -95,7 +95,7 @@ function Scene() {
     return [roundedRandomPointX, roundedRandomPointY]
   }
 
-  const positionSquares = (index, length, newPoints) => {
+  const positionSquares = (index: number, length: number, newPoints: Array<any>): any => {
     if (index === 0) {
       const randomPoint = [0, 0]
       return positionSquares(1, length, [randomPoint]);
@@ -130,7 +130,7 @@ function Scene() {
 
   const { camera, mouse } = useThree();
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = (e: any ) => {
     // setTimeout(() => {
       if (!meshRef.current) return;
       // meshRef.current.position.x = (((mouse.x + 1) / 2) * window.innerWidth)/(window.innerWidth*5)
@@ -140,7 +140,7 @@ function Scene() {
     // }, 500)
   }
 
-  const limitPanningDistance = (e: Event) => {
+  const limitPanningDistance = (e: any) => {
     const maxX = 0.9;
     const minX = -0.9;
     const maxY = 1.65;
@@ -210,35 +210,33 @@ function Scene() {
           )
         })}
       </group>
+      <Suspense fallback={null}>
       {points.length && files.length ? points.map((point, index) => (
-        <Suspense fallback={null}>
-          <Square
-            position={point}
-            space={space}
-            date={directory[year][month][index]}
-            key={index}
-          />
-        </Suspense>
+        <Square
+          position={point}
+          space={space}
+          date={directory[year][month][index]}
+          key={index}
+        />
       )) : (
-        <Suspense fallback={null}>
-          <mesh
-            ref={sleepyRef}
-            position={new Vector3(0, 0, 0)}
-          >
-            <planeGeometry
-              args={[0.125, 1]}
-            />
-            <meshBasicMaterial
-              color="black"
-            />
-            <Html position={[-0.035, 0.25, 0]} ref={sleepyHtmlRef}>
-              <SleepyCard>
-                {year === 2023 && !files.length ? 'This was a sleepy period...' : 'Something great is on the way...'}
-              </SleepyCard>
-            </Html>
-          </mesh>
-        </Suspense>
+        <mesh
+          ref={sleepyRef}
+          position={new Vector3(0, 0, 0)}
+        >
+          <planeGeometry
+            args={[0.125, 1]}
+          />
+          <meshBasicMaterial
+            color="black"
+          />
+          <Html position={[-0.035, 0.25, 0]} ref={sleepyHtmlRef}>
+            <SleepyCard>
+              {year === 2023 && !files.length ? 'This was a sleepy period...' : 'Something great is on the way...'}
+            </SleepyCard>
+          </Html>
+        </mesh>
       )}
+        </Suspense>
       </mesh>
     </>
   )

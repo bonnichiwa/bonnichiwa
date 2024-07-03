@@ -120,18 +120,21 @@ export default function Modal() {
           ref={textContainerRef}
         >
           <AnimatedText
-            text={`${year}${formatMonth(month)}${formatDay(day)}`}
+            text={`${year}${formatMonth(month)}${formatDay(day as number)}`}
             variant="modal"
             delay={1}
           />
-          {data[year][month][day]?.track ? (
+          {data[year][month][(day as number)]?.track ? (
             <Description ref={descriptionRef}>
-              {`track id: ${data[year][month][day]?.track}`}
+              {`track id: ${data[year][month][(day as number)]?.track}`}
             </Description>
           ) : ''}
           <Hashtags>
-            {data[year][month][day]?.hashtags.map((hashtag: string, i: number) => (
-              <Description ref={el => hashtagRef.current[i] = el}>
+            {data[year][month][(day as number)]?.hashtags.map((hashtag: string, i: number) => (
+              <Description
+                ref={el => hashtagRef.current[i] = el}
+                key={i}
+              >
                 {`#${hashtag}`}
               </Description>
             ))}

@@ -34,6 +34,7 @@ export default function Title({
       {name.map((letter, i) => (
         <div
           ref={el => letterRef.current[i] = el}
+          key={i}
         >
           <Box
             bg={images[i]}

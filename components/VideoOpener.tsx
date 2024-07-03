@@ -12,7 +12,7 @@ export default function VideoOpener() {
   const descriptionRef = useRef<any>([]);
   const { setIntroDone } = useIntroStore((state) => state) as IntroStore;
 
-  const handleMouseMove = e => {
+  const handleMouseMove = (e: any) => {
     setTimeout(() => {
       const x = e.clientX;
       const y = e.clientY;

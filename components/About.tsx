@@ -18,9 +18,9 @@ export default function About() {
   return (
     <Container>
       <Text ref={textRef}>
-        <p>Hi! I'm Bonnie, a former software engineer and interior designer.</p>
-        <p>Most recently I've taken a break to pursue more creative endeavours.</p>
-        <p>Having a background in software and design, I've found my passion lies within the unity of the two - creative coding.</p>
+        <p>Hi! I&apos;m Bonnie, a former software engineer and interior designer.</p>
+        <p>Most recently I&apos;ve taken a break to pursue more creative endeavours.</p>
+        <p>Having a background in software and design, I&apos;ve found my passion lies within the unity of the two - creative coding.</p>
         <p>I like to experiment with the blurring of physical and technological layers of art.</p>
         <p>I specialize in creating audioreactive visuals.</p>
         <p>I am open to work and collaborations as a creative technologist.</p>

@@ -7,7 +7,7 @@ export default function Cursor() {
   const [hidden, setHidden] = useState(false);
   const [clicked, setClicked] = useState(false);
   const [linkHovered, setLinkHovered] = useState(false);
-  const { isModalOpen, isAboutModalOpen } = useModalStore((state) => state) as ModalStore;
+  const { isModalOpen, isAboutModalOpen, isProjectsModalOpen } = useModalStore((state) => state) as ModalStore;
 
   useEffect(() => {
     addEventListeners();
@@ -69,6 +69,7 @@ export default function Cursor() {
       hovered={linkHovered}
       modalOpen={isModalOpen}
       aboutModalOpen={isAboutModalOpen}
+      projectsModalOpen={isProjectsModalOpen}
     />
   )
 }
@@ -79,6 +80,7 @@ const Mouse = styled.div<{
   hovered: boolean;
   modalOpen: boolean;
   aboutModalOpen: boolean;
+  projectsModalOpen: boolean;
 }>`
   width: 40px;
   height: 40px;
@@ -117,11 +119,20 @@ const Mouse = styled.div<{
   `}
 
   ${props => props.aboutModalOpen && css`
-  border: 2px solid #ffffff;
-`}
+    border: 2px solid #ffffff;
+  `}
 
-${props => props.aboutModalOpen && props.clicked && css`
-  border: 2px solid #ffffff;
-  background-color: #ffffff;
-`}
+  ${props => props.aboutModalOpen && props.clicked && css`
+    border: 2px solid #ffffff;
+    background-color: #ffffff;
+  `}
+
+  ${props => props.projectsModalOpen && css`
+    border: 2px solid #ffffff;
+  `}
+
+  ${props => props.projectsModalOpen && props.clicked && css`
+    border: 2px solid #ffffff;
+    background-color: #ffffff;
+  `}
 `

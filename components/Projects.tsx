@@ -17,9 +17,15 @@ export default function Projects() {
 
   return (
     <Container>
-      <Text ref={textRef}>
-        Projects
-      </Text>
+      <div>
+        <Text ref={textRef}>
+          Projects
+        </Text>
+        <List>
+          <li><a href="https://www.behance.net/gallery/175359421/GGVJ-An-Interactive-VJing-Experience" target="_blank">GGVJ, New York, 2023</a></li>
+          <li><a href="https://www.behance.net/gallery/187629401/Shapes-at-Play" target="_blank">Shapes at Play, Montreal, 2023</a></li>
+        </List>
+      </div>
       <ExitButton onClick={() => closeProjectsModal()}>
         X
       </ExitButton>
@@ -78,4 +84,18 @@ const ExitButton = styled.div`
     top: 30px;
     right: 20px;
   }
+`
+
+const List = styled.ul`
+  margin: 50px;
+  font-size: 12px;
+
+  li {
+    a {
+      &:hover {
+        cursor: none;
+        font-weight: 700;
+        transition: 0.2s all;
+      }
+    }
 `

@@ -118,8 +118,8 @@ export default function Home() {
   useEffect(() => {
     if (isIntroDone) {
       gsap.fromTo(navTitleRef.current, { x: -300 }, { x: 0, duration: 1, delay: 1 })
-      gsap.fromTo(yearRef.current, { x: 300 }, { x: 0, duration: 1, delay: 5 })
-      gsap.fromTo(monthRef.current, { x: 300 }, { x:0, duration: 1, delay: 5 })
+      gsap.fromTo(yearRef.current, { x: 350 }, { x: 0, duration: 1, delay: 1.2 })
+      gsap.fromTo(monthRef.current, { x: 350 }, { x:0, duration: 1, delay: 1.3 })
       gsap.fromTo(gridRef.current, { opacity: 0 }, { opacity: 1, duration: 1, delay: 0.8 })
     }
   }, [isIntroDone]);
@@ -177,10 +177,14 @@ export default function Home() {
             </div>
           ) : (
             <div>
-              <NavYear />
-              <MonthsRow>
-                <NavMonth />
-              </MonthsRow>
+              <div ref={yearRef}>
+                <NavYear />
+              </div>
+              <div ref={monthRef}>
+                <MonthsRow>
+                  <NavMonth />
+                </MonthsRow>
+              </div>
             </div>
           )}
         </TopRow>

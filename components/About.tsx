@@ -20,11 +20,10 @@ export default function About() {
       <Text ref={textRef}>
         <p>Hi! I&apos;m Bonnie, a former software engineer and interior designer.</p>
         <p>Most recently I&apos;ve taken a break to pursue more creative endeavours.</p>
-        <p>Having a background in software and design, I&apos;ve found my passion lies within the unity of the two - creative coding.</p>
-        <p>I like to experiment with the blurring of physical and technological layers of art.</p>
+        <p>Having a background in software and design, I&apos;ve found my passion lies within the intersection of the two - creative coding.</p>
+        <p>I like to experiment with the blurring of the digital and reality.</p>
         <p>I specialize in creating audioreactive visuals.</p>
-        <p>I am open to work and collaborations as a creative technologist.</p>
-        <p>You can find me on Instagram <a href="https://www.instagram.com/bani.visuals/" target="_blank">@bani.visuals</a> and over <a href="mailto:dearbonniepham@gmail.com">email</a>.</p>
+        <p>If you&apos;re interested in collaborations you can find me on Instagram <a href="https://www.instagram.com/bani.visuals/" target="_blank">@bani.visuals</a> and over <a href="mailto:dearbonniepham@gmail.com">email</a>.</p>
       </Text>
       <ExitButton onClick={() => closeAboutModal()}>
         X

@@ -15,7 +15,6 @@ import ThumbnailGrid from '@/components/ThumbnailGrid'
 import useIntroStore, { IntroStore } from '@/stores/intro'
 import About from '@/components/About'
 import Projects from '@/components/Projects'
-import Error from 'next/error'
 
 export default function Home() {
   const navTitleRef = useRef<any>();
@@ -33,8 +32,6 @@ export default function Home() {
   const { isModalOpen, isAboutModalOpen, isProjectsModalOpen } = useModalStore((state) => state) as ModalStore;
   const { isIntroDone } = useIntroStore((state) => state) as IntroStore;
 
-
-  throw new Error();
   function handleWindowSizeChange() {
     setWidth(window.innerWidth);
 

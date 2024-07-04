@@ -6,12 +6,13 @@ import styled from "styled-components"
 export default function Projects() {
   const { closeProjectsModal, isProjectsModalOpen } = useModalStore(state => state) as ModalStore;
   const textRef = useRef<any>();
+  const listRef = useRef<any>();
 
   useEffect(() => {
     if (isProjectsModalOpen) {
-      gsap.to(textRef.current, { opacity: 1, y: 0, delay: 0.5 })
+      gsap.to([textRef.current, listRef.current], { opacity: 1, y: 0, delay: 0.5 })
     } else {
-      gsap.to(textRef.current, { opacity: 0, y: 20 })
+      gsap.to([textRef.current, listRef.current], { opacity: 0, y: 20 })
     }
   }, [isProjectsModalOpen])
 
@@ -21,7 +22,7 @@ export default function Projects() {
         <Text ref={textRef}>
           Projects
         </Text>
-        <List>
+        <List ref={listRef}>
           <li><a href="https://www.behance.net/gallery/175359421/GGVJ-An-Interactive-VJing-Experience" target="_blank">GGVJ, New York, 2023</a></li>
           <li><a href="https://www.behance.net/gallery/187629401/Shapes-at-Play" target="_blank">Shapes at Play, Montreal, 2023</a></li>
         </List>

@@ -190,14 +190,23 @@ export const data: Data = {
       },
       9: {
         track: 'RUI HO - acceleration',
-        hashtags: ['audio_reactive', 'glsl', '3d_texture_map']
+        hashtags: ['audio_reactive', '3d_texture_map']
       },
       14: {
         track: 'windowseeker - i95 drifter',
-        hashtags: ['audio_reactive', 'glsl', '3d']
+        hashtags: ['audio_reactive', 'ray_marching', '3d']
+      },
+      27: {
+        track: 'montee - her',
+        hashtags: ['audio_reactive', 'ray_marching', '3d_text']
       }
     },
-    7: [],
+    7: {
+      3: {
+        track: 'kleinefrigo - blue everyday (good luck remix)',
+        hashtags: ['audio_reactive', 'ray_marching', '3d']
+      }
+    },
     8: [],
     9: [],
     10: [],

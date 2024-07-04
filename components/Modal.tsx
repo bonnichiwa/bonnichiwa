@@ -22,7 +22,7 @@ export default function Modal() {
   // let timeline: any;
   const timeline = useRef<any>();
 
-  const handleClickOutside = (e: MouseEvent) => {
+  const handleClickOutside = (e: MouseEvent) => {console.log('handlign click')
     if (containerRef.current?.contains(e.target) && !arrowLeftRef.current?.contains(e.target) && !arrowRightRef.current?.contains(e.target)) {
       videoRef.current?.pause();
       closeModal();
@@ -35,6 +35,8 @@ export default function Modal() {
   }, []);
 
   useEffect(() => {
+    if (!isModalOpen) return;
+    console.log('playing')
     if (timeline.current) timeline.current.kill();
 
     if (videoRef.current && textContainerRef.current && descriptionRef.current && hashtagRef.current && exitButtonRef.current) {
@@ -64,9 +66,13 @@ export default function Modal() {
       .fromTo(descriptionRef.current,
         { opacity: 0, y: 20 },
         { opacity: 1, y: 0, duration: 0.7 }, '-=0.8')
-      .fromTo(hashtagRef.current,
+        
+    if (hashtagRef.current)
+      timeline.current.fromTo(hashtagRef.current,
         { opacity: 0, y: 20 },
         { opacity: 1, y: 0, stagger: 0.1 }, '-=0.8')
+    
+    videoRef.current.play();
   }, [day, isModalOpen, window.innerWidth]);
 
   return (
@@ -109,7 +115,6 @@ export default function Modal() {
             key={`${year}-${month}-${day}`}
             controls
             width="100%"
-            autoPlay
             ref={videoRef}
           >
             <source src={`/videos/${year}/${month}/${day}.mp4`} type="video/mp4" />
@@ -299,7 +304,7 @@ const TextContainer = styled.div`
   margin-top: 50px;
   border: 1px solid white;
   padding: 40px;
-  max-width: 30vw;
+  max-width: 250px;
   height: fit-content;
 
   @media (max-width: 768px) {

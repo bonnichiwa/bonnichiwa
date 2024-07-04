@@ -14,7 +14,7 @@ export const spaceMono = Space_Mono({ subsets: ['latin'], weight: ['400', '700']
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
-    <ErrorBoundary fallback={<Error>Something went wrong. Please try refreshing the page.</Error>}>
+    <ErrorBoundary fallback={<Error>Oops! Something went wrong. Please try refreshing the page.</Error>}>
       <main className={spaceMono.className}>
         <Component {...pageProps} />
       </main>
@@ -30,4 +30,8 @@ const Error = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100%;
+  width: 100%;
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
 `

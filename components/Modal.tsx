@@ -4,7 +4,7 @@ import useModalStore, { ModalStore } from "@/stores/modal";
 import useDateStore, { DateStore } from "@/stores/date";
 import { formatDay, directory, formatMonth } from "."
 import { data } from "./data";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import AnimatedText from "./AnimatedText";
 import gsap from "gsap";
 
@@ -19,13 +19,14 @@ export default function Modal() {
   const arrowLeftRef = useRef<any>();
   const arrowRightRef = useRef<any>();
   const exitButtonRef = useRef<any>();
-  // let timeline: any;
   const timeline = useRef<any>();
+  const [videoLoaded, setVideoLoaded] = useState<boolean>(false);
 
-  const handleClickOutside = (e: MouseEvent) => {console.log('handlign click')
+  const handleClickOutside = (e: MouseEvent) => {
     if (containerRef.current?.contains(e.target) && !arrowLeftRef.current?.contains(e.target) && !arrowRightRef.current?.contains(e.target)) {
       videoRef.current?.pause();
       closeModal();
+      setVideoLoaded(false);
     }
   };
 
@@ -36,7 +37,7 @@ export default function Modal() {
 
   useEffect(() => {
     if (!isModalOpen) return;
-    console.log('playing')
+
     if (timeline.current) timeline.current.kill();
 
     if (videoRef.current && textContainerRef.current && descriptionRef.current && hashtagRef.current && exitButtonRef.current) {
@@ -72,8 +73,8 @@ export default function Modal() {
         { opacity: 0, y: 20 },
         { opacity: 1, y: 0, stagger: 0.1 }, '-=0.8')
     
-    videoRef.current.play();
-  }, [day, isModalOpen, window.innerWidth]);
+    videoRef.current?.play();
+  }, [day, videoLoaded, isModalOpen, window.innerWidth]);
 
   return (
     <Container ref={containerRef}>
@@ -107,15 +108,27 @@ export default function Modal() {
               closeModal();
             }
           }
+          setVideoLoaded(false)
         }}
       >{window.innerWidth <= 768 ? '<' : 'previous'}</ArrowLeft>
       <ContentWrapper>
         <VideoContainer>
+        <LoadingContainer>
+          {videoLoaded ? null : (
+            <Loader>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </Loader>
+          )}
+          </LoadingContainer>
           <video
             key={`${year}-${month}-${day}`}
             controls
             width="100%"
             ref={videoRef}
+            onLoadedData={() => {console.log('loaded'); setVideoLoaded(true)}}
           >
             <source src={`/videos/${year}/${month}/${day}.mp4`} type="video/mp4" />
             Could not load video
@@ -150,6 +163,7 @@ export default function Modal() {
         onClick={() => {
           videoRef.current?.pause();
           closeModal();
+          setVideoLoaded(false);
         }}
         ref={exitButtonRef}
       >X</X>
@@ -178,6 +192,7 @@ export default function Modal() {
               closeModal();
             }
           }
+          setVideoLoaded(false);
         }}
       >{window.innerWidth <= 768 ? '>' : 'next'}</ArrowRight>
     </Container>
@@ -296,6 +311,59 @@ const VideoContainer = styled.div`
     padding: 20px;
     width: 60vw;
     margin: 0;
+  }
+`
+
+const LoadingContainer = styled.div`
+  height: 80%;
+  width: 30vw;
+  position: absolute;
+  z-index: 100;
+`
+
+const Loader = styled.div`
+  z-index: 100;
+  box-sizing: border-box;
+  color: #ffffff;
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  
+  div {
+    box-sizing: border-box;
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    margin: 8px;
+    border: 4px solid currentColor;
+    border-radius: 50%;
+    animation: loader 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: currentColor transparent transparent transparent;
+  }
+
+  div:nth-child(1) {
+    animation-delay: -0.45s;
+  }
+  div:nth-child(2) {
+    animation-delay: -0.3s;
+  }
+  div:nth-child(3) {
+    animation-delay: -0.15s;
+  }
+
+  @keyframes loader {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 `
 

@@ -113,26 +113,27 @@ export default function Modal() {
       >{window.innerWidth <= 768 ? '<' : 'previous'}</ArrowLeft>
       <ContentWrapper>
         <VideoContainer>
-        <LoadingContainer>
-          {videoLoaded ? null : (
-            <Loader>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-            </Loader>
-          )}
-          </LoadingContainer>
           <video
             key={`${year}-${month}-${day}`}
             controls
             width="100%"
             ref={videoRef}
+            hidden={!videoLoaded}
             onLoadedData={() => {console.log('loaded'); setVideoLoaded(true)}}
           >
             <source src={`/videos/${year}/${month}/${day}.mp4`} type="video/mp4" />
             Could not load video
           </video>
+          {!videoLoaded && (
+            <LoadingContainer>
+              <Loader>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </Loader>
+            </LoadingContainer>
+          )}
         </VideoContainer>
         <TextContainer
           ref={textContainerRef}

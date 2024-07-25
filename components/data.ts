@@ -205,6 +205,14 @@ export const data: Data = {
       3: {
         track: 'kleinefrigo - blue everyday (good luck remix)',
         hashtags: ['audio_reactive', 'ray_marching', '3d']
+      },
+      11: {
+        track: 'FTRMNK - all day',
+        hashtags: ['audio_reactive', '3d', 'graphic_design']
+      },
+      18: {
+        track: 'lake hills - VHS',
+        hashtags: ['audio_reactive', 'hand_tracking', 'generative_AI']
       }
     },
     8: [],

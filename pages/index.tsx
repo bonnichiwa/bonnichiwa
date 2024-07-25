@@ -15,6 +15,7 @@ import ThumbnailGrid from '@/components/ThumbnailGrid'
 import useIntroStore, { IntroStore } from '@/stores/intro'
 import About from '@/components/About'
 import Projects from '@/components/Projects'
+import MobileDiscretion from '@/components/MobileDiscretion'
 
 export default function Home() {
   const navTitleRef = useRef<any>();
@@ -29,7 +30,7 @@ export default function Home() {
   const hamburgerRef = useRef<any>();
   const [menuOpen, setMenuOpen] = useState(false);
   const [width, setWidth] = useState<number>(window.innerWidth);
-  const { isModalOpen, isAboutModalOpen, isProjectsModalOpen } = useModalStore((state) => state) as ModalStore;
+  const { isModalOpen, isAboutModalOpen, isProjectsModalOpen, isMobileDiscretionModalOpen } = useModalStore((state) => state) as ModalStore;
   const { isIntroDone } = useIntroStore((state) => state) as IntroStore;
 
   function handleWindowSizeChange() {
@@ -207,6 +208,7 @@ export default function Home() {
       <div ref={projectsModalRef}>
         <Projects />
       </div>
+      {(isMobile && isMobileDiscretionModalOpen) ? <MobileDiscretion /> : null}
     </Container>
   )
 }

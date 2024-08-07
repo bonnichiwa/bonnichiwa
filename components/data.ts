@@ -213,9 +213,18 @@ export const data: Data = {
       18: {
         track: 'lake hills - VHS',
         hashtags: ['audio_reactive', 'hand_tracking', 'generative_AI']
+      },
+      31: {
+        track: 'uilou, a-bug - cancer girl',
+        hashtags: ['audio_reactive', 'hand_tracking', 'gesture_recognition']
       }
     },
-    8: [],
+    8: {
+      7: {
+        track: 'fred again... - ItsNotREEAALLLLLLLL',
+        hashtags: ['glitch', 'data_moshing', 'image_segmentation']
+      }
+    },
     9: [],
     10: [],
     11: [],
